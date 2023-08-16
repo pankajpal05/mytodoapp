@@ -21,7 +21,6 @@ const Todo = () => {
         item: data,
         isCompleted: editItem.complete,
       });
-      console.log(updateVal, "updatevalue---");
       setEditItem({});
       setData("");
       return setTodo(updateVal);
@@ -29,8 +28,15 @@ const Todo = () => {
     const obj = {};
     obj.isCompleted = false;
     obj.item = data;
+    obj.id = todo.length;
     setTodo([...todo, obj]);
   };
+
+  const todoList = !isInProgress
+    ? todo
+    : todo.filter((todoItem) => {
+        return todoItem.isCompleted === false;
+      });
 
   const deleteTodo = (index) => {
     const updateTodo = [...todo];
@@ -48,16 +54,19 @@ const Todo = () => {
     const check = e.target.checked;
     const checkedTodo = [...todo];
     if (check) {
-      checkedTodo.splice(index, 1, { isCompleted: true, item: val });
+      checkedTodo.splice(index, 1, { isCompleted: true, item: val, id: index });
       setTodo(checkedTodo);
     } else {
-      checkedTodo.splice(index, 1, { isCompleted: false, item: val });
+      checkedTodo.splice(index, 1, {
+        isCompleted: false,
+        item: val,
+        id: index,
+      });
       setTodo(checkedTodo);
     }
   };
 
   const allTodo = JSON.parse(localStorage.getItem("todo"));
-
   const hideandShow = (e) => {
     const checked = e.target.checked;
     if (checked) {
@@ -70,12 +79,6 @@ const Todo = () => {
   useEffect(() => {
     localStorage.setItem("todo", JSON.stringify(todo));
   }, [todo]);
-
-  const todoList = !isInProgress
-    ? todo
-    : todo.filter((todoItem) => {
-        return todoItem.isCompleted === false;
-      });
 
   return (
     <div className="mainWrapper">
@@ -105,7 +108,9 @@ const Todo = () => {
                     <div className="todo">
                       <Checkbox
                         checked={todos.isCompleted}
-                        onClick={(e) => checkCompleteTask(e, todos.item, index)}
+                        onClick={(e) =>
+                          checkCompleteTask(e, todos.item, todos.id)
+                        }
                         sx={{ color: "blue", fontSize: "20px" }}
                       />
                       {todos.item}
