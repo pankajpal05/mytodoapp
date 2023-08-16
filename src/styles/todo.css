@@ -1,0 +1,83 @@
+body {
+  background-color: orange;
+}
+
+.mainWrapper {
+  width: 100vw;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.todoContainer {
+  border: 2px solid black;
+  background-color: white;
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.todoHeading {
+  font-weight: 600;
+  color: blue;
+  font-size: 18px;
+}
+
+.searchTodo {
+  position: relative;
+}
+
+.search {
+  padding: 15px 10px 15px 10px;
+  border: none;
+  background-color: gainsboro;
+  border-radius: 15px;
+}
+
+.searchbtn {
+  border: none;
+  background-color: orangered;
+  padding: 15px 20px 15px 20px;
+  border-radius: 15px;
+  color: white;
+  position: absolute;
+  right: 0px;
+  font-weight: 600;
+}
+
+.todoList {
+  width: 400px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.todoItem {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  align-items: center;
+}
+
+.filterSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 400px;
+  width: 100%;
+  margin: 20px;
+}
+
+.filterBtn {
+  background-color: rgb(58, 187, 58);
+  border: none;
+  padding: 10px 20px;
+  color: white;
+
+  border-radius: 8px;
+}
