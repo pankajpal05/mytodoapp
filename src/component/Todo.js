@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "../styles/todo.css";
 import Checkbox from "@mui/material/Checkbox";
 import EditNoteRoundedIcon from "@mui/icons-material/EditNoteRounded";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
+import "../styles/todo.css";
 
 const Todo = () => {
   const [data, setData] = useState("");
