@@ -17,9 +17,10 @@ const Todo = () => {
     setData("");
     if (Object.keys(editItem).length > 0) {
       const updateVal = [...todo];
-      updateVal.splice(editItem.index, 1, {
+      updateVal.splice(editItem.id, 1, {
         item: data,
         isCompleted: editItem.complete,
+        id: editItem.id,
       });
       setEditItem({});
       setData("");
@@ -44,9 +45,9 @@ const Todo = () => {
     setTodo(updateTodo);
   };
 
-  const editTodo = (item, index, isComplete) => {
+  const editTodo = (item, id, isComplete) => {
     setData(item);
-    const obj = { index: index, complete: isComplete };
+    const obj = { id: id, complete: isComplete };
     setEditItem(obj);
   };
 
@@ -119,7 +120,7 @@ const Todo = () => {
                     <div className="todoEdit">
                       <EditNoteRoundedIcon
                         onClick={() =>
-                          editTodo(todos.item, index, todos.isCompleted)
+                          editTodo(todos.item, todos.id, todos.isCompleted)
                         }
                       />
                       <DeleteRoundedIcon onClick={() => deleteTodo(index)} />
